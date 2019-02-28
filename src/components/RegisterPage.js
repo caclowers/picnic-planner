@@ -27,9 +27,7 @@ class RegisterPage extends Component {
       } else {
          const body = {
             username: this.state.username,
-            password: this.state.password,
-            city: this.state.city,
-            State: this.state.State,
+            password: this.state.password
          };
 
          // making the request to the server to post the new user's registration
@@ -73,7 +71,7 @@ class RegisterPage extends Component {
          <div className="formDiv">
             {this.renderAlert()}
             <form className="form" onSubmit={this.registerUser}>
-               <h1>Register User</h1>
+               <h2>Register User</h2>
                <div>
                   <label htmlFor="username">
                      Username:

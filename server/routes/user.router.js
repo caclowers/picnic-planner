@@ -32,39 +32,21 @@ router.post('/register', (req, res, next) => {
 
    const username = req.body.username;
    const password = encryptLib.encryptPassword(req.body.password);
-   const city = req.body.city;
-   const state = req.body.State;
-   //   const latitude = '';
-   //   const longitude = '';
-   //   const uvIndex = '';
-   //   const date = req.body.date;
+  
    
-   const queryText =`WITH insert1 AS (
-      INSERT INTO "user" (username, password, default_city, default_state)
-       VALUES ($1, $2, $3, $4) RETURNING id as user_id
-   )
-      INSERT INTO "locations"(city, state, user_id)
-      VALUES ($5, $6, (SELECT * FROM insert1));`
-   // INSERT INTO "uv_data" (date, reported_uv_index, location_id)
-   //  VALUES ($6, $7, $8)
-   
-   // const queryText = 'INSERT INTO "user" (username, password) VALUES ($1, $2) RETURNING id as user_id';
-   // const queryText2 = 'INSERT INTO "locations" (city, state, user_id) VALUES ($1, $2, $3) RETURNING id as location_id';
-   // const queryText3 = 'INSERT INTO "uv_data" (date, reported_uv_index, location_id) VALUES ($1, $2, $3)'
-   pool.query(queryText, [username, password, city, state, city, state])
-      // .then(pool.query(queryText2, [city, state, user_id])
-         //   pool.query(queryText3, [date, uvIndex])
+   const queryText =`
+      INSERT INTO "user" (username, password)
+       VALUES ($1, $2);`
+    pool.query(queryText, [username, password])
          .then(() => { res.sendStatus(201); })
          .catch((err) => { next(err); })
-      // )
-
 });
 
 
-router.post('/', (req, res) => {
-   const queryText = 'INSERT INTO "locations"'
-   pool.query()
-})
+// router.post('/', (req, res) => {
+//    const queryText = 'INSERT INTO "locations"'
+//    pool.query()
+// })
 
 
 

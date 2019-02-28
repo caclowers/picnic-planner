@@ -8,9 +8,9 @@ class App extends Component {
     return (
     <header className="App-header">
           
-          <p>
+          <h1>
             picnic-planner
-          </p>
+          </h1>
           
         </header>
     );
