@@ -7,26 +7,49 @@ body {
     sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+  width:100%
 }
 
 code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, "Courier New",
     monospace;
 }
-a, input{
+a {
   font-size: 2rem;
   color: rebeccapurple;
   border-color: rgb(216, 216, 216) rgb(209, 209, 209) rgb(186, 186, 186);
-    border-style: solid;
-    border-radius: 4px;
-    border-width: 1px;
-    padding: 1px 7px 2px;
-    background-color: buttonface;
+  border-style: solid;
+  border-radius: 4px;
+  border-width: 1px;
+  padding: 1px 7px 2px;
+  background-color: buttonface;
 }
 
- 
+input {
+  font-size: 1rem;
+  background-color: white;
+  margin-bottom: 0.5rem
+
+}
+
+tbody {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+  width: 100%
+}
+th {
+  border: 0.25rem solid white;
+  width: 7rem
+}
+
 .App {
   text-align: center;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: flex-start;
   color: white;
   min-height: 50rem;
   font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
@@ -35,6 +58,7 @@ a, input{
   background-size: contain;
   background-color: black;
   background-position: 50% 75%; 
+  width: 100%
 }
 
 /* .App-logo {
@@ -52,7 +76,9 @@ a, input{
   justify-content: center;
   font-size: calc(10px + 2vmin);
   color: white;
-  border-bottom: 0.25rem solid skyblue
+  border-bottom: 0.25rem solid skyblue;
+  width: 100%;
+  margin-bottom: 3rem;
 }
 
 .form {
@@ -64,6 +90,13 @@ align-items: center
   color: #61dafb;
 } */
 
+#formDiv {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  width: 95%
+}
 /* @keyframes App-logo-spin {
   from {
     transform: rotate(0deg);

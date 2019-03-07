@@ -1,42 +1,28 @@
-
 const express = require('express');
-require('dotenv').config();
-
 const app = express();
 const bodyParser = require('body-parser');
-const sessionMiddleware = require('./modules/session-middleware');
-
-const passport = require('./strategies/user.strategy');
-
-// Route includes
-const userRouter = require('./routes/user.router');
-const locationsRouter = require('./routes/locations.router');
-// const uvDataRouter = require('./routes/uvData.router');
-// Body parser middleware
-app.use(bodyParser.json());
-app.use(bodyParser.urlencoded({ extended: true }));
-
-// Passport Session Configuration //
-app.use(sessionMiddleware);
-
-// start up passport sessions
-app.use(passport.initialize());
-app.use(passport.session());
-
-/* Routes */
-app.use('/api/user', userRouter);
-app.use('/api/locations', locationsRouter);
-// app.use('/api/uvData', uvDataRouter);
-
-// Serve static files
-app.use(express.static('build'));
-
-// App Set //
 const PORT = process.env.PORT || 5000;
+const toDoRouter = require('../server/routes/list.router');
+const mongoose = require('mongoose');
+const databaseUrl = `mongodb://localhost:27017/picnic-planner`;
 
-/** Listen * */
-app.listen(PORT, () => {
-  console.log(`Listening on port: ${PORT}`);
+mongoose.connect(databaseUrl);
+
+mongoose.connection.on('connected', () => {
+    console.log(`mongoose connected to ${databaseUrl}`);
 });
 
-module.exports = app;
+mongoose.connection.on('error', (error) => {
+    console.log(`mongoose connection error ${error}`);
+});
+
+app.use(express.static('server/public'));
+
+app.use(bodyParser.urlencoded({ extended: true }));
+app.use(bodyParser.json());
+
+app.use('/toDoList', toDoRouter);
+
+app.listen(PORT, function(){
+    console.log('app is running on port:', PORT);
+});
