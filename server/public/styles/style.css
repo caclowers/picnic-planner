@@ -1,0 +1,150 @@
+body{
+    font-size: 1em;
+    font-weight: bolder;
+    background-color: white;
+    color: black;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    width: 100%
+}
+
+header {
+    text-align: center;
+}
+
+input, select{
+    font-size: 1em;
+    color: black;
+    border: 0.25rem solid grey;
+    border-radius: 0.25rem
+}
+
+
+#submitButton{
+    font-weight: bolder;
+    font-size: 1.5em;
+    color: black;
+}
+
+#editButton{
+    font-weight: bolder;
+    color: black;}
+
+h1{
+    font-size: 4em;
+    font-weight: bolder;
+    margin-bottom: 0;
+}
+
+h2{
+    color: black;
+}
+
+th{
+    font-size: 2.5em;
+    text-align: center;
+}
+
+td{
+    color: black;
+    font-size: 1.25em;
+    text-align: center;
+}
+
+table{
+    margin: 12px;
+}
+
+
+#subtext{
+    font-size: 0.15em;
+    color: black;
+}
+
+#nameCell{
+    font-size: 2em;
+    text-align: center;
+}
+
+@keyframes example {
+    from {background-color: #4D5061;}
+    to {background-color: black;}
+    from {color: white;}
+    to {color: white;
+        -webkit-text-stroke-width: 0.3px;}
+}
+
+/* @keyframes example2 {
+    w3-animate-left
+} */
+
+#completeBox{
+    text-align: left;
+}
+
+#deleteBox {
+    -webkit-animation-name: example; /* Safari 4.0 - 8.0 */
+    -webkit-animation-duration: 2s;
+    animation-name: example;
+    animation-duration: 2s;
+    animation-fill-mode: forwards;
+    -webkit-animation: slide 2s forwards;
+    animation: w3-animate-left 2s forwards;
+}
+
+.pending-delete{
+    -webkit-animation-name: example; /* Safari 4.0 - 8.0 */
+    -webkit-animation-duration: 2s;
+    animation-name: example;
+    animation-duration: 2s;
+    animation-fill-mode: forwards;
+}
+
+#thingType{
+    font-weight: bolder;
+    font-size: 1.5em;
+    color: black;}
+
+#inputsToCenter{
+    text-align: center
+}
+
+
+
+.bodyDiv{
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  opacity: 1;
+  width: 85%;
+}
+
+#container{
+  display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    opacity: 1;
+    width: 100%
+}
+
+#container img {
+    position: absolute;
+    left: 0;
+    top: 0;
+    width: auto;
+    max-height: 16em;
+    opacity: 0.4;
+}
+
+#tableDiv, #headerDiv {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  opacity: 1;
+  width: 100%;
+}

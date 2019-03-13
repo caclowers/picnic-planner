@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <link rel="stylesheet" href="vendors/bootstrap.min.css">
+  <link rel="stylesheet" href="styles/style.css">
+  <script src="vendors/angular.min.js"></script>
+  <script src="vendors/sweetalert.min.js"></script>
+  <script src="scripts/client.js"></script>
+  <title>picnic-planner</title>
+</head>
+
+<body id="container" ng-app="thingApp">
+  <div class="bodyDiv" ng-controller="thingController as vm">
+    <div id="headerDiv">
+      <img src="https://openclipart.org/image/2400px/svg_to_png/28096/sheikh-tuhin-To-Do-List.png" alt="">
+      <header>
+        <h1 class="bg">picnic-planner
+          <span id="subtext">...bring stuff</span>
+        </h1>
+      </header>
+      <br>
+      <div id="inputsToCenter">
+        <label id="thingType" for="singleSelect">thing:</label>
+        <input ng-model="vm.newThing.name" type="text" placeholder="what to bring" ng-required="true">
+        <br>
+        <label id="thingType" for="thingNumber">how many:</label>
+        <select name="thingNumber" ng-model="vm.newThing.number" ng-required="true">
+          <option value="">---Please select---</option>
+          <option value="1">1</option>
+          <option value="2">2</option>
+          <option value="3">3</option>
+          <option value="4">4</option>
+          <option value="5">5</option>
+        </select>
+        <br>
+        <label id="thingType" for="singleSelect">who:</label>
+        <input ng-model="vm.newThing.person" type="text" placeholder="who's bringing it?" ng-required="true">
+        <br>
+        <button id="submitButton" ng-click="vm.addThing(vm.newThing)">Submit New thing</button>
+        <br>
+        <br>
+      </div>
+    </div>
+    <div id="tableDiv">
+      <table class="table table-hover table-sm table-bordered">
+        <thead>
+          <th>who?</th>
+          <th>thing</th>
+          <th>how many?</th>
+          <th>check</th>
+          <th>edit</th>
+        </thead>
+        <tbody>
+          <tr ng-repeat="thing in vm.things | filter:searchText" ng-init="editMode = false">
+            <td>{{thing.person}}</td>
+            <td id="nameCell" ng-class="{'pending-delete': item.checked}">{{thing.name}}</td>
+            <td>{{thing.number}}</td>
+            <td id="completeBox">
+              <label>
+                <input type="checkbox" ng-model="item.checked">
+                <span ng-show="item.checked">
+                  <label>delete it?
+                    <input id="deleteBox" ng-class="{'deleteBox': item.checked}" type="checkbox"
+                      ng-model="item.unchecked" ng-click="vm.deleteThing(thing._id)">
+                  </label>
+                </span>
+              </label>
+            </td>
+            <td>
+                <button type="checkbox" ng-click="vm.editThing(thing)"ng-model="item.edit">
+                <!-- <span ng-show="item.checked">
+                  <label>delete it?
+                    <input id="deleteBox" ng-class="{'deleteBox': item.checked}" type="checkbox"
+                      ng-model="item.unchecked" ng-click="vm.deleteThing(thing._id)">
+                  </label>
+                </span> -->
+              
+            </td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</body>
+
+</html>
